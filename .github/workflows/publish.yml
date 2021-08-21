@@ -21,5 +21,5 @@ jobs:
         uses: Elskom/publish-nuget@main
         with:
           PROJECT_FILE_PATH: 'src/**/*.csproj'
-          PACKAGE_PATH: 'artifacts/'
+          PACKAGE_PATH: artifacts/
           NUGET_KEY: ${{secrets.NUGET_KEY}}
