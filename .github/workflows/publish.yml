@@ -1,8 +1,4 @@
-name: publish to nuget
-on:
-  push:
-    branches:
-      - main
+on: [push]
 jobs:
   publish:
     name: build, pack & publish
