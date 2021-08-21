@@ -1,11 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Conesoft.Network_Connections</RootNamespace>
-    <Version>1.0.0</Version>
     <Authors>davepermen</Authors>
     <Company>Conesoft</Company>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <Version>1.0.1</Version>
+    <Authors>davepermen</Authors>
+    <Company>Conesoft</Company>
+    <PackageIcon>Conesoft.forNuget.x256.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/conesoft/network-connections</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>tiny wrapper around GetExtendedTcpTable to find ports and connections by process</Description>
+    <PackageTags>library dotnet-core</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Conesoft.forNuget.x256.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
