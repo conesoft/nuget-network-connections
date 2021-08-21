@@ -14,15 +14,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
            dotnet-version: '5.0.x'
-           
-      - name: Create Artifacts Directory
-        run: mkdir artifacts
     
       # Publish
       - name: publish on version change
         id: publish_nuget
-        uses: Elskom/publish-nuget@main
+        uses: conesoft/publish-nuget@main
         with:
-          PROJECT_FILE_PATH: '**/*.csproj'
-          PACKAGE_PATH: artifacts/
           NUGET_KEY: ${{secrets.NUGET_KEY}}
