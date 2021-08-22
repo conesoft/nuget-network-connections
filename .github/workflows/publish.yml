@@ -1,19 +1,9 @@
-on: [push]
+on: push
 jobs:
   publish:
-    name: build, pack & publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v1
-        with:
-           dotnet-version: '5.0.x'
-    
-      # Publish
-      - name: publish on version change
-        id: publish_nuget
-        uses: conesoft/publish-nuget@main
+      - uses: conesoft/publish-nuget@main
         with:
           NUGET_KEY: ${{secrets.NUGET_KEY}}
