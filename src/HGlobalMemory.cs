@@ -6,11 +6,9 @@ namespace Conesoft.Network_Connections;
 
 [Browsable(false)]
 [EditorBrowsable(EditorBrowsableState.Never)]
-public class HGlobalMemory : IDisposable
+public class HGlobalMemory(int size) : IDisposable
 {
-    public IntPtr Pointer { get; private set; }
-
-    public HGlobalMemory(int size) => Pointer = Marshal.AllocHGlobal(size);
+    public IntPtr Pointer { get; private set; } = Marshal.AllocHGlobal(size);
 
     public T? Read<T>(int offset = 0, int index = 0) => Marshal.PtrToStructure<T>(Pointer + offset + index * Marshal.SizeOf<T>());
 

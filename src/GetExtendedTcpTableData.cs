@@ -6,7 +6,7 @@ namespace Conesoft.Network_Connections;
 [Browsable(false)]
 [EditorBrowsable(EditorBrowsableState.Never)]
 [StructLayout(LayoutKind.Sequential)]
-public struct GetExtendedTcpTableData
+public readonly struct GetExtendedTcpTableData
 {
     public readonly uint state;
     public readonly uint localAddress;

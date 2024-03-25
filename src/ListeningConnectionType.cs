@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 
@@ -6,7 +7,8 @@ namespace Conesoft.Network_Connections;
 
 [Browsable(false)]
 [EditorBrowsable(EditorBrowsableState.Never)]
-class ListeningConnectionType : IConnectionFromType
+public static class ConnectionExtensionsForProcess
 {
-    public Connection? From(Process process) => Connections.Listening.FirstOrDefault(c => c.ProcessId == process.Id);
+    public static IEnumerable<Connection> GetListeningPorts(this Process process) => Connections.Listening.Where(c => c.ProcessId == process.Id);
+    public static IEnumerable<Connection> GetAllPorts(this Process process) => Connections.All.Where(c => c.ProcessId == process.Id);
 }
