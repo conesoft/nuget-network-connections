@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
@@ -11,11 +11,10 @@ public partial class Connections
 
     private static IEnumerable<Connection> GetConnections(int tblClass)
     {
-        _ = GetExtendedTcpTable(IntPtr.Zero, out var size, tblClass: tblClass);
-
+        var size = 0;
+        _ = GetExtendedTcpTable(IntPtr.Zero, ref size, tblClass: tblClass);
         using var table = new HGlobalMemory(size);
-
-        if (0 == GetExtendedTcpTable(table.Pointer, out size, tblClass: tblClass))
+        if (0 == GetExtendedTcpTable(table.Pointer, ref size, tblClass: tblClass))
         {
             for (var i = 0; i < table.Read<uint>(offset: 0); i++)
             {
@@ -29,5 +28,5 @@ public partial class Connections
     const int TCP_TABLE_OWNER_PID_ALL = 5;
 
     [LibraryImport("iphlpapi.dll", SetLastError = true)]
-    private static partial uint GetExtendedTcpTable(IntPtr pTcpTable, out int dwOutBufLen, [MarshalAs(UnmanagedType.Bool)] bool sort = true, int ipVersion = AF_INET, int tblClass = TCP_TABLE_OWNER_PID_LISTENER, uint reserved = 0);
+    private static partial uint GetExtendedTcpTable(IntPtr pTcpTable, ref int dwOutBufLen, [MarshalAs(UnmanagedType.Bool)] bool sort = true, int ipVersion = AF_INET, int tblClass = TCP_TABLE_OWNER_PID_LISTENER, uint reserved = 0);
 }
